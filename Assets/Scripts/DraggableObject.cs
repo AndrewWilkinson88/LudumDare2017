@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DraggableObject : MonoBehaviour
 {
-    private bool mouseIsDown;
+    public bool mouseIsDown;
     private Rigidbody rigidBody;
     public bool isOnBackpack = false;
     //public List<DraggableObject> draggableContact = new List<DraggableObject>();
@@ -30,7 +30,7 @@ public class DraggableObject : MonoBehaviour
             //Vector3 p = c.ScreenToWorldPoint(new Vector3(x, y, MovementController.instance.backpack.transform.position.z - Camera.main.transform.position.z));
             Vector3 p = c.ScreenToWorldPoint(new Vector3(x, y, Vector3.Distance(MovementController.instance.backpack.transform.position, Camera.main.transform.position)));
 
-            gameObject.transform.position = new Vector3(p.x, p.y, MovementController.instance.backpack.transform.position.z);
+            gameObject.transform.position = new Vector3(p.x, Mathf.Max(p.y, .5f), MovementController.instance.backpack.transform.position.z);
         }        
         else if(isOnBackpack)
         {

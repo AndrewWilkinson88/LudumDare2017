@@ -64,7 +64,6 @@ public class MovementController : MonoBehaviour {
         while (q.Count > 0)
         {
             DraggableObject d = q.Dequeue();
-            Debug.Log(d);
             d.isOnBackpack = true;
             foreach (DraggableObject ndo in d.contacts.Keys)
             {
