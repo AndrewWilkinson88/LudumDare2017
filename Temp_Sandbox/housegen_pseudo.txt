@@ -1,46 +1,68 @@
+IMPORTANT:
+# we are restricting the house to a 4x4 grid.
+
 class: house
 
-	array: rooms, objects of class::room
+	array: existing_rooms, objects of class::room 		#will contain the rooms that actually exist in this house. Max 16.
+	array: pool_rooms, objects of class::room    		#contains all possible room layouts.
+	array: potential_room_coords, a bunch of coordinate values       #will contain the possible locations we can put the next room
 
 	method: constructor
-		initialize array: rooms
-		call create_house
+		Initialize array: rooms -> undef
+		Initialize array: pool_rooms -> populate.
+		Initialize array: potential_room_coords -> undef
+		Call create_house
 	
 	method: create_house 
 		^ start with one room with the exit, procedurally generate the house 1 room at a time.
-		
-		#FIRST ROOM
-		create object::room1::constructor	#create the 1st room
-		call object::room1::add_exit	#initialize the first room with the exit
-		
-		For 1...10 rooms:
-			create object::roomX::constructor   #create the X room
-			call object::room1::add_door(random_direction, roomX)	#add a door from first room to the next room. The door back should be created automatically.
+		Call place_first_room
+		For N number of times:    #we can determine this some other way, maybe just max cap it to something
+			call place_next_room
 
+	method: place_first_room
+		From pool_rooms, pick a room with 2 or more exits (ie. North->exists, West->undef, East->exists, South->undef)
+		Add object::room1 to array::rooms
+		Set room1::coordinates = something, 1,1 maybe?		#place the room somewhere
+		Push room1::coordinates to potential_room_coords    #will be removed immediately by update_potential_room_coords
+		Call house::update_potential_room_coords(room1)
 
-	class: room
-		scalar: type (one of 10 possible room-type values)
-				^ kitchen, dining, living, bed1, bed2, bed3, bath1, bath2, foyer, office
+	method: place_next_room
+		Pick a random set of coordinates from potential_room_coords
+		roomX = choose a random room from pool_rooms.
+		Check that roomX has at least one exit that points to any of the coordinates from existing_rooms::coordinates
+			^ if not, then reject and pick a new one
+		Add roomX to existing_rooms
+		Call update_potential_room_coords(roomX)
 
-		hash: exits: north->undef
-					 west->undef
-					 east->undef
-					 south->undef
+	method: update_potential_room_coords (returns nothing, takes object::room)
+		Remove the current object::room coords from potential_room_coords
+		For each exit (NWES):
+			if the exit is North:
+				Push potential_room_coords, room1 x, room1 y+1 
+			if the exit is West:
+				Push potential_room_coords, room1 x-1, room1 y 
+			if the exit is East:
+				Push potential_room_coords, room1 x+1, room1 y 
+			if the exit is South:
+				Push potential_room_coords, room1 x, room1 y-1 
+			^ unless x or y is less than 1 or greater than 4.
 
-		method: constructor
-			initialize scalar: type (pick a random one?)
-			initialize hash: doors -> all values undef
+class: room
+	scalar: type 
+	array: coordinates: (x,y) -> x,y can only be 1->4 inclusive
 
-		method: add_door (returns nothing) (accepts direction, other_room object)
-			if hash::exits::given_direction is undef:
-				set hash::exits::given_direction (ie: North) to (object::other_room)
+	hash: exits: north->undef #(these can be undef or exist. Boolean works)
+				 west->undef
+				 east->undef
+				 south->undef
 
-			check if that object::other_room has this room in the hash::exits::OPPOSITEdirection (ie: south).
-				if hash::exits::OPPOSITEdirection is undef, then call add_door(South, Object::room1)
-				if hash::exits::OPPOSITEdirection is Object::room1, everything is good. Return.
-				if hash::exits::OPPOSITEdirection is anything else, fail, return error.
+	method: constructor
+		initialize scalar: type (possibly initialize here?)
+		initialize array: coordinates -> undef
+		initialize hash: doors -> all values undef
 
-		method: add_exit (returns nothing) (accepts nothing)
-			add value::exit to array::exits
+	method: add_exit (returns nothing) (accepts direction)
+		if hash::exits::given_direction is undef:
+			set hash::exits::given_direction (ie: North) to "exists"
 
 
