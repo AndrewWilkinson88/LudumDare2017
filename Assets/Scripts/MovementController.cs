@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TempCharacterController : MonoBehaviour {
+public class MovementController : MonoBehaviour {
 
-    public static TempCharacterController instance;
+    public static MovementController instance;
 
     public GameObject backpack;
     public Rigidbody2D playerPhysicsPost;

@@ -375,7 +375,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 500076614}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9298a5c7981669e419a1cffd1e459e7c, type: 3}
+  m_Script: {fileID: 11500000, guid: 73083c5be30d51a4d8f5169f4993c624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   backpack: {fileID: 1396848504}
@@ -1072,8 +1072,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9298a5c7981669e419a1cffd1e459e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backpack: {fileID: 0}
-  playerPhysicsPost: {fileID: 0}
 --- !u!1001 &1786076879
 Prefab:
   m_ObjectHideFlags: 0

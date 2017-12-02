@@ -27,13 +27,13 @@ public class DraggableObject : MonoBehaviour
 
             rigidBody.velocity = Vector2.zero;
 
-            Vector3 p = c.ScreenToWorldPoint(new Vector3(x, y, TempCharacterController.instance.backpack.transform.position.z - Camera.main.transform.position.z));
+            Vector3 p = c.ScreenToWorldPoint(new Vector3(x, y, MovementController.instance.backpack.transform.position.z - Camera.main.transform.position.z));
 
             gameObject.transform.position = p;            
         }        
         else if(isOnBackpack)
         {
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, TempCharacterController.instance.backpack.transform.position.z);
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, MovementController.instance.backpack.transform.position.z);
         }
 
         isOnBackpack = false;
@@ -44,17 +44,17 @@ public class DraggableObject : MonoBehaviour
     {
         //Debug.Log(col.gameObject.name + "  collided");
         DraggableObject d = col.gameObject.GetComponent<DraggableObject>();
-        if (col.gameObject == TempCharacterController.instance.backpack)
+        if (col.gameObject == MovementController.instance.backpack)
         {
-            if (TempCharacterController.instance.contacts.ContainsKey(this))
+            if (MovementController.instance.contacts.ContainsKey(this))
             {
-                TempCharacterController.instance.contacts[this] = 1;
+                MovementController.instance.contacts[this] = 1;
             }
             else
             {
-                TempCharacterController.instance.contacts.Add(this, 1);
+                MovementController.instance.contacts.Add(this, 1);
             }
-            Debug.Log("adding contact, new count: " + TempCharacterController.instance.contacts[this]);
+            Debug.Log("adding contact, new count: " + MovementController.instance.contacts[this]);
             //TempCharacterController.instance.draggableContacts.Add(this);
         }
         else if(d != null)
@@ -74,11 +74,11 @@ public class DraggableObject : MonoBehaviour
     void OnCollisionExit2D(Collision2D col)
     {
         DraggableObject d = col.gameObject.GetComponent<DraggableObject>();
-        if (col.gameObject == TempCharacterController.instance.backpack)
+        if (col.gameObject == MovementController.instance.backpack)
         {
             //TempCharacterController.instance.contacts.Remove(d);            
-            TempCharacterController.instance.contacts[this] = 0;
-            Debug.Log("removing contact, new count: " + TempCharacterController.instance.contacts[this]);
+            MovementController.instance.contacts[this] = 0;
+            Debug.Log("removing contact, new count: " + MovementController.instance.contacts[this]);
         }
         else if(d != null)
         {
