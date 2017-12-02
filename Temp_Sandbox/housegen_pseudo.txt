@@ -3,4 +3,4 @@ class: house
 	class: room
 		value: type (one of 10 possible room-type values)
 				^ kitchen, dining, living, bed1, bed2, bed3, bath1, bath2, xxx, xxx.
-				
+				Is this in my fork or master?
