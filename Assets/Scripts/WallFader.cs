@@ -14,38 +14,53 @@ public class WallFader : MonoBehaviour
 {
     public GameObject playerCharacter;
 
-    private GameObject previousFade;
+    private List<GameObject> previousFade;
+    private List<GameObject> fadeCheck;
     const float FADE_VALUE = 0.2f;
 
     void Start()
     {
-        previousFade = null;
+        previousFade = new List<GameObject>();
+        fadeCheck = new List<GameObject>();
     }
 
     // Update is called once per frame
     void Update ()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, playerCharacter.transform.position - transform.position, out hit) )
+        int layerMask = 1 << LayerMask.NameToLayer("Wall");
+        Vector3 camToPlayer = playerCharacter.transform.position - transform.position;
+        RaycastHit[] hits = Physics.RaycastAll(transform.position, camToPlayer, camToPlayer.magnitude, layerMask);
+        previousFade.Clear();
+        if (hits.Length != 0)
         {
-            if( previousFade != null)
+            foreach (RaycastHit hit in hits)
             {
-                Renderer prevWallRender = previousFade.GetComponentInChildren<Renderer>(true);
-                Color noFade = prevWallRender.material.color;
-                noFade.a = 1.0f;
-                prevWallRender.material.color = noFade;
-                changeRenderMode(hit.collider.gameObject, BlendMode.Opaque);
+                int fadeIndex = fadeCheck.FindIndex((x) => x == hit.collider.gameObject);
+                if( fadeIndex != -1)
+                {
+                    fadeCheck.RemoveAt(fadeIndex);
+                }
+
+                previousFade.Add(hit.collider.gameObject);
+                Renderer wallRender = hit.collider.gameObject.GetComponentInChildren<Renderer>(true);
+                Color fade = wallRender.material.color;
+                changeRenderMode(hit.collider.gameObject, BlendMode.Fade);
+
+                fade.a = FADE_VALUE;
+                wallRender.material.color = fade;
             }
-
-            previousFade = hit.collider.gameObject;
-            Renderer wallRender = hit.collider.gameObject.GetComponentInChildren<Renderer>(true);
-            Color fade = wallRender.material.color;
-            changeRenderMode(hit.collider.gameObject, BlendMode.Fade);
-
-            fade.a = FADE_VALUE;
-            wallRender.material.color = fade;
         }
-	}
+
+        foreach( GameObject fadeObject in fadeCheck )
+        {
+            Renderer prevWallRender = fadeObject.GetComponentInChildren<Renderer>(true);
+            Color noFade = prevWallRender.material.color;
+            noFade.a = 1.0f;
+            prevWallRender.material.color = noFade;
+            changeRenderMode(fadeObject, BlendMode.Opaque);
+        }
+        fadeCheck = new List<GameObject>(previousFade);
+    }
 
     private void changeRenderMode(GameObject go, BlendMode blendMode)
      {
