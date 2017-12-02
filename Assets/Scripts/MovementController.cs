@@ -33,20 +33,20 @@ public class MovementController : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position += new Vector3(0, 0, .1f);
+            transform.position += new Vector3(0, 0, .05f);
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            transform.position += new Vector3(0, 0, -.1f);
+            transform.position += new Vector3(0, 0, -.05f);
         }
 
         if(Input.GetKey(KeyCode.E))
         {
-            backpack.GetComponent<Rigidbody>().AddTorque(new Vector3(0, 0, -20f));
+            backpack.GetComponent<Rigidbody>().AddTorque(new Vector3(0, 0, -10f));
         }
         else if(Input.GetKey(KeyCode.Q))
         {
-            backpack.GetComponent<Rigidbody>().AddTorque(new Vector3(0, 0,20f));
+            backpack.GetComponent<Rigidbody>().AddTorque(new Vector3(0, 0,10f));
         }
 
         calculateOnMe();
