@@ -5,7 +5,7 @@ public class Force : MonoBehaviour {
 
 	void OnMouseDown()
 	{
-		rigidbody.AddForce(-transform.forward * 600);
-			rigidbody.useGravity = true;
+		//gameObject.GetComponent<Rigidbody>().AddForce(-transform.forward * 600);
+        //gameObject.GetComponent<Rigidbody>().useGravity = true;
 	}
 }

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212209905646683718}
   - component: {fileID: 54729536651290530}
   - component: {fileID: 65288231672608818}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Backpack Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4542558780187846}
   - component: {fileID: 114522215715701378}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 54119466977455346}
   - component: {fileID: 65275263454520958}
   - component: {fileID: 59164895670013602}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BackpackTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1155241619878650}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.35, z: 0}
+  m_LocalPosition: {x: 30.225, y: 1.4, z: -0.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4273247929081332}
