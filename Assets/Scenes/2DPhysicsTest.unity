@@ -166,14 +166,14 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 7
 --- !u!212 &338766317
 SpriteRenderer:
@@ -227,7 +227,7 @@ Transform:
   m_GameObject: {fileID: 338766314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 3, y: 1, z: 1}
+  m_LocalScale: {x: 7.3988495, y: 0.87708455, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -270,6 +270,16 @@ Prefab:
     - target: {fileID: 4463321468762632, guid: cd77a52e1c01d5546a5b571c04f4afda, type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114276423746463104, guid: cd77a52e1c01d5546a5b571c04f4afda,
+        type: 2}
+      propertyPath: backpack
+      value: 
+      objectReference: {fileID: 1396848504}
+    - target: {fileID: 50934227872438782, guid: cd77a52e1c01d5546a5b571c04f4afda,
+        type: 2}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd77a52e1c01d5546a5b571c04f4afda, type: 2}
@@ -317,6 +327,11 @@ Prefab:
       propertyPath: m_Name
       value: box (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114276423746463104, guid: cd77a52e1c01d5546a5b571c04f4afda,
+        type: 2}
+      propertyPath: backpack
+      value: 
+      objectReference: {fileID: 1396848504}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd77a52e1c01d5546a5b571c04f4afda, type: 2}
   m_IsPrefabParent: 0
@@ -328,6 +343,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 500076615}
+  - component: {fileID: 500076616}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -351,6 +367,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &500076616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 500076614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73083c5be30d51a4d8f5169f4993c624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backpack: {fileID: 1396848504}
+  playerPhysicsPost: {fileID: 1761188248}
 --- !u!1001 &671867100
 Prefab:
   m_ObjectHideFlags: 0
@@ -475,6 +504,8 @@ GameObject:
   - component: {fileID: 1396848507}
   - component: {fileID: 1396848509}
   - component: {fileID: 1396848510}
+  - component: {fileID: 1396848511}
+  - component: {fileID: 1396848512}
   m_Layer: 0
   m_Name: BackpackTop
   m_TagString: Untagged
@@ -620,12 +651,42 @@ SpringJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0.6725682, y: -0.5436621}
-  m_ConnectedAnchor: {x: 6.639518, y: 0.07}
+  m_Anchor: {x: 0.6, y: -0.5}
+  m_ConnectedAnchor: {x: 6, y: 0.07}
   m_AutoConfigureDistance: 0
-  m_Distance: 0.5637279
+  m_Distance: 0.5
   m_DampingRatio: 0.3
-  m_Frequency: 3
+  m_Frequency: 5
+--- !u!114 &1396848511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1396848504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bfc05325c7764242945cf8f35c2c3e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!231 &1396848512
+SpringJoint2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1396848504}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 1761188248}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: -0.6, y: -0.5}
+  m_ConnectedAnchor: {x: -6, y: 0.07}
+  m_AutoConfigureDistance: 0
+  m_Distance: 0.5
+  m_DampingRatio: 0.3
+  m_Frequency: 5
 --- !u!1001 &1425180317
 Prefab:
   m_ObjectHideFlags: 0
@@ -929,8 +990,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 500
+  m_Mass: 20
+  m_LinearDrag: 20
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -1006,7 +1067,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1761188246}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9298a5c7981669e419a1cffd1e459e7c, type: 3}
   m_Name: 
