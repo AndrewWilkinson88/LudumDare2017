@@ -17,6 +17,7 @@ public class DraggableObject : MonoBehaviour
     }
 
     // Update is called once per frame
+    /*
     void Update()
     {
         if(mouseIsDown)
@@ -33,6 +34,29 @@ public class DraggableObject : MonoBehaviour
             gameObject.transform.position = new Vector3(p.x, Mathf.Max(p.y, .5f), MovementController.instance.backpack.transform.position.z);
         }        
         else if(isOnBackpack)
+        {
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, MovementController.instance.backpack.transform.position.z);
+        }
+
+        isOnBackpack = false;
+    }*/
+
+    void LateUpdate()
+    {
+        if (mouseIsDown)
+        {
+            float x = Input.mousePosition.x;
+            float y = Input.mousePosition.y;
+            Camera c = Camera.main;
+
+            rigidBody.velocity = Vector2.zero;
+
+            //Vector3 p = c.ScreenToWorldPoint(new Vector3(x, y, MovementController.instance.backpack.transform.position.z - Camera.main.transform.position.z));
+            Vector3 p = c.ScreenToWorldPoint(new Vector3(x, y, Vector3.Distance(MovementController.instance.backpack.transform.position, Camera.main.transform.position)));
+
+            gameObject.transform.position = new Vector3(p.x, Mathf.Max(p.y, .5f), MovementController.instance.backpack.transform.position.z);
+        }
+        else if (isOnBackpack)
         {
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, MovementController.instance.backpack.transform.position.z);
         }

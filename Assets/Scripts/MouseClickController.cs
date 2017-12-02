@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MouseClickController : MonoBehaviour {
-    public LayerMask itemLayerMask;
+    //Right now make this really long, we should probaly make it shorter eventually
+    public float maxReach = 2f;
+    public LayerMask itemLayerMask;    
+    private DraggableObject curDraggable;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
-
-    private DraggableObject curDraggable;
 
 	// Update is called once per frame
 	void Update () {
@@ -25,7 +26,8 @@ public class MouseClickController : MonoBehaviour {
             {
                 Debug.Log("HIT OBJECT : " + hit.collider.gameObject.name);
                 DraggableObject d = hit.collider.gameObject.GetComponent<DraggableObject>();
-                if (d != null)
+                
+                if (d != null && Vector3.Distance(d.transform.position, MovementController.instance.backpack.transform.position) <= maxReach)
                 {
                     d.mouseIsDown = true;
                     curDraggable = d;

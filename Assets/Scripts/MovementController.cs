@@ -22,15 +22,16 @@ public class MovementController : MonoBehaviour {
 	void Update () {
 		if (Input.GetKey(KeyCode.A))
         {
-            playerPhysicsPost.AddForce(new Vector3(-1000f, 0, 0));
+            playerPhysicsPost.AddForce(new Vector3(-100f, 0, 0));
             //transform.position = transform.position + new Vector3(-.01f,0,0);
         }
         else if(Input.GetKey(KeyCode.D))
         {
-            playerPhysicsPost.AddForce(new Vector3(1000f, 0, 0));
+            playerPhysicsPost.AddForce(new Vector3(100f, 0, 0));
             //transform.position = transform.position + new Vector3(.01f, 0, 0);
         }
-        else if(Input.GetKey(KeyCode.W))
+
+        if (Input.GetKey(KeyCode.W))
         {
             transform.position += new Vector3(0, 0, .1f);
         }
@@ -38,6 +39,16 @@ public class MovementController : MonoBehaviour {
         {
             transform.position += new Vector3(0, 0, -.1f);
         }
+
+        if(Input.GetKey(KeyCode.E))
+        {
+            backpack.GetComponent<Rigidbody>().AddTorque(new Vector3(0, 0, -20f));
+        }
+        else if(Input.GetKey(KeyCode.Q))
+        {
+            backpack.GetComponent<Rigidbody>().AddTorque(new Vector3(0, 0,20f));
+        }
+
         calculateOnMe();
     }
 
