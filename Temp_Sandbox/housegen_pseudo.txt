@@ -4,24 +4,43 @@ class: house
 
 	method: constructor
 		initialize array: rooms
-					^ pick 10 unique room-types?
+		call create_house
+	
+	method: create_house 
+		^ start with one room with the exit, procedurally generate the house 1 room at a time.
+		
+		#FIRST ROOM
+		create object::room1::constructor	#create the 1st room
+		call object::room1::add_exit	#initialize the first room with the exit
+		
+		For 1...10 rooms:
+			create object::roomX::constructor   #create the X room
+			call object::room1::add_door(random_direction, roomX)	#add a door from first room to the next room. The door back should be created automatically.
+
 
 	class: room
 		scalar: type (one of 10 possible room-type values)
-				^ kitchen, dining, living, bed1, bed2, bed3, bath1, bath2, xxx, xxx.
+				^ kitchen, dining, living, bed1, bed2, bed3, bath1, bath2, foyer, office
 
-		array: doors: names of the rooms the room links to. (ie: dining, living, bath1). Can also be EXIT.
+		hash: exits: north->undef
+					 west->undef
+					 east->undef
+					 south->undef
 
 		method: constructor
-			initialize scalar: type
-			initialize array: doors
-				^ randomize 1-3 doors. (can be weighted based on room type)
-				^ if room: type has a door to another room::type, they must match with each other.
-				^ EXIT does not need to match another room::type
+			initialize scalar: type (pick a random one?)
+			initialize hash: doors -> all values undef
 
-		method: 
+		method: add_door (returns nothing) (accepts direction, other_room object)
+			if hash::exits::given_direction is undef:
+				set hash::exits::given_direction (ie: North) to (object::other_room)
 
+			check if that object::other_room has this room in the hash::exits::OPPOSITEdirection (ie: south).
+				if hash::exits::OPPOSITEdirection is undef, then call add_door(South, Object::room1)
+				if hash::exits::OPPOSITEdirection is Object::room1, everything is good. Return.
+				if hash::exits::OPPOSITEdirection is anything else, fail, return error.
 
-
+		method: add_exit (returns nothing) (accepts nothing)
+			add value::exit to array::exits
 
 
