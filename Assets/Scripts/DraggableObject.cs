@@ -27,9 +27,10 @@ public class DraggableObject : MonoBehaviour
 
             rigidBody.velocity = Vector2.zero;
 
-            Vector3 p = c.ScreenToWorldPoint(new Vector3(x, y, MovementController.instance.backpack.transform.position.z - Camera.main.transform.position.z));
+            //Vector3 p = c.ScreenToWorldPoint(new Vector3(x, y, MovementController.instance.backpack.transform.position.z - Camera.main.transform.position.z));
+            Vector3 p = c.ScreenToWorldPoint(new Vector3(x, y, Vector3.Distance(MovementController.instance.backpack.transform.position, Camera.main.transform.position)));
 
-            gameObject.transform.position = p;            
+            gameObject.transform.position = new Vector3(p.x, p.y, MovementController.instance.backpack.transform.position.z);
         }        
         else if(isOnBackpack)
         {
