@@ -5,7 +5,7 @@ using UnityEngine;
 public class DraggableObject : MonoBehaviour
 {
     private bool mouseIsDown;
-    private Rigidbody2D rigidBody;
+    private Rigidbody rigidBody;
     public bool isOnBackpack = false;
     //public List<DraggableObject> draggableContact = new List<DraggableObject>();
     public Dictionary<DraggableObject, int> contacts = new Dictionary<DraggableObject, int>();
@@ -13,7 +13,7 @@ public class DraggableObject : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        rigidBody = this.GetComponent<Rigidbody2D>();
+        rigidBody = this.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -40,7 +40,7 @@ public class DraggableObject : MonoBehaviour
     }
 
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnCollisionEnter(Collision col)
     {
         //Debug.Log(col.gameObject.name + "  collided");
         DraggableObject d = col.gameObject.GetComponent<DraggableObject>();
@@ -71,7 +71,7 @@ public class DraggableObject : MonoBehaviour
         }
     }
 
-    void OnCollisionExit2D(Collision2D col)
+    void OnCollisionExit(Collision col)
     {
         DraggableObject d = col.gameObject.GetComponent<DraggableObject>();
         if (col.gameObject == MovementController.instance.backpack)
