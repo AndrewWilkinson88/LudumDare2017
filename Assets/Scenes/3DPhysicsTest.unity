@@ -151,6 +151,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 65275263454520958, guid: 7c1ff1674c5807748935db1ba91d5b43,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: c3e53ac2faa902840b8f6d1d34ad7a24,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7c1ff1674c5807748935db1ba91d5b43, type: 2}
   m_IsPrefabParent: 0
@@ -182,8 +188,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6, y: 2, z: 4}
-  m_Center: {x: 0, y: -1, z: 2}
+  m_Size: {x: 1.6, y: 2, z: 8}
+  m_Center: {x: 0, y: -1, z: 0}
 --- !u!54 &338766316
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -341,11 +347,6 @@ Prefab:
       propertyPath: m_Name
       value: box (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 114276423746463104, guid: cd77a52e1c01d5546a5b571c04f4afda,
-        type: 2}
-      propertyPath: backpack
-      value: 
-      objectReference: {fileID: 1396848504}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd77a52e1c01d5546a5b571c04f4afda, type: 2}
   m_IsPrefabParent: 0
@@ -460,11 +461,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1396848504 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1377510570567000, guid: 7c1ff1674c5807748935db1ba91d5b43,
-    type: 2}
-  m_PrefabInternal: {fileID: 245705420}
 --- !u!1001 &1425180317
 Prefab:
   m_ObjectHideFlags: 0
@@ -554,6 +550,12 @@ Prefab:
       propertyPath: m_Name
       value: box (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 65502072419832256, guid: cd77a52e1c01d5546a5b571c04f4afda,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: dac71baee2bbec748be279b1607df3be,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd77a52e1c01d5546a5b571c04f4afda, type: 2}
   m_IsPrefabParent: 0
