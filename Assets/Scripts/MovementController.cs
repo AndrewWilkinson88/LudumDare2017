@@ -7,14 +7,14 @@ public class MovementController : MonoBehaviour {
     public static MovementController instance;
 
     public GameObject backpack;
-    public Rigidbody2D playerPhysicsPost;
+    public Rigidbody playerPhysicsPost;
 
     //public List<DraggableObject> contacts = new List<DraggableObject>();
     public Dictionary<DraggableObject, int> contacts = new Dictionary<DraggableObject, int>();
 
     // Use this for initialization
     void Start () {
-        //playerPhysicsPost = GetComponent<Rigidbody2D>();
+        //playerPhysicsPost = GetComponent<Rigidbody>();
         instance = this;
     }
 	
@@ -22,12 +22,12 @@ public class MovementController : MonoBehaviour {
 	void Update () {
 		if (Input.GetKey(KeyCode.A))
         {
-            playerPhysicsPost.AddForce(new Vector2(-1000f, 0));
+            playerPhysicsPost.AddForce(new Vector3(-1000f, 0, 0));
             //transform.position = transform.position + new Vector3(-.01f,0,0);
         }
         else if(Input.GetKey(KeyCode.D))
         {
-            playerPhysicsPost.AddForce(new Vector2(1000f, 0));
+            playerPhysicsPost.AddForce(new Vector3(1000f, 0, 0));
             //transform.position = transform.position + new Vector3(.01f, 0, 0);
         }
         else if(Input.GetKey(KeyCode.W))
