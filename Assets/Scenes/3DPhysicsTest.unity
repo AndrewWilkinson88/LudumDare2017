@@ -151,12 +151,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 65275263454520958, guid: 7c1ff1674c5807748935db1ba91d5b43,
-        type: 2}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: c3e53ac2faa902840b8f6d1d34ad7a24,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7c1ff1674c5807748935db1ba91d5b43, type: 2}
   m_IsPrefabParent: 0
@@ -550,12 +544,6 @@ Prefab:
       propertyPath: m_Name
       value: box (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 65502072419832256, guid: cd77a52e1c01d5546a5b571c04f4afda,
-        type: 2}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: dac71baee2bbec748be279b1607df3be,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd77a52e1c01d5546a5b571c04f4afda, type: 2}
   m_IsPrefabParent: 0
