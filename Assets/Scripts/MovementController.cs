@@ -17,7 +17,7 @@ public class MovementController : MonoBehaviour {
         //playerPhysicsPost = GetComponent<Rigidbody>();
         instance = this;
     }
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKey(KeyCode.A))
