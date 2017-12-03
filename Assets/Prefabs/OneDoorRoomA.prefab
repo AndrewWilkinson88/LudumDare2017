@@ -110,7 +110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4053060514904652}
   m_Layer: 0
-  m_Name: NEWOneDoorRoomA
+  m_Name: OneDoorRoomA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
