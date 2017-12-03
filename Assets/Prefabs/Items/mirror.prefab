@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33348952218044454}
   - component: {fileID: 23333730830510546}
   - component: {fileID: 65231094531593952}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: frame_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 4043316540490332}
   - component: {fileID: 54598086616416522}
   - component: {fileID: 114120350414081302}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: mirror
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4766496461213380}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: mirror_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 4368660330892050}
   - component: {fileID: 33548795494238664}
   - component: {fileID: 23536380771138572}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: mirror
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1664948879035632}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.88, y: 2.183333, z: 1.254}
+  m_LocalPosition: {x: 1.3707118, y: 1.569, z: 9.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4766496461213380}
@@ -124,7 +124,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1756645977132006}
-  m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2.000357, z: 1.666964}
   m_Children:
@@ -132,7 +132,7 @@ Transform:
   - {fileID: 4368660330892050}
   m_Father: {fileID: 4043316540490332}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: -90.00001}
+  m_LocalEulerAnglesHint: {x: -90.00001, y: 90, z: -90.00001}
 --- !u!23 &23333730830510546
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -225,7 +225,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 48

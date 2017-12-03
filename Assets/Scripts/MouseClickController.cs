@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MouseClickController : MonoBehaviour {
     //Right now make this really long, we should probaly make it shorter eventually
-    public float maxReach = 2f;
+    private float maxReach = 5f;
     public LayerMask itemLayerMask;    
     private DraggableObject curDraggable;
 
@@ -28,12 +28,15 @@ public class MouseClickController : MonoBehaviour {
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, itemLayerMask))
             {
                 Debug.Log("HIT OBJECT : " + hit.collider.gameObject.name);
-                DraggableObject d = hit.collider.gameObject.GetComponent<DraggableObject>();
+                DraggableObject d = hit.collider.gameObject.GetComponentInParent<DraggableObject>();
                 
                 if (d != null && Vector3.Distance(d.transform.position, MovementController.instance.backpack.transform.position) <= maxReach)
                 {
+                    Rigidbody r = d.GetComponent<Rigidbody>();
+                    r.useGravity = true;
+                    
                     d.mouseIsDown = true;
-                    curDraggable = d;
+                    curDraggable = d;                    
                 }
             }
         }

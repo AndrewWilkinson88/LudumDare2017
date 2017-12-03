@@ -117,7 +117,7 @@ public class DraggableObject : MonoBehaviour
         }
     }
 
-    void OnMouseDown()
+    /*void OnMouseDown()
     {
         Debug.Log(gameObject.name + "  clicked");
         mouseIsDown = true;
@@ -126,6 +126,6 @@ public class DraggableObject : MonoBehaviour
     void OnMouseUp()
     {
         mouseIsDown = false;
-    }
+    }*/
     
 }
