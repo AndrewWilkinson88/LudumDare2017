@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class MainMenu : MonoBehaviour
     public void OnStartButton()
     {
         //Start Game
+        SceneManager.LoadScene("HookedScene");
     }
 
     public void OnHelpButton()
@@ -67,6 +69,13 @@ public class MainMenu : MonoBehaviour
     void updateHelpPage()
     {
         helpPageCount.text = (currentPage + 1).ToString() + " / " + helpPages.Count;
+
+        foreach( GameObject go in helpPages)
+        {
+            go.SetActive(false);
+        }
+
+        helpPages[currentPage].SetActive(true);
 
         leftButton.enabled = (currentPage != 0);
         rightButton.enabled = (currentPage != helpPages.Count-1);
