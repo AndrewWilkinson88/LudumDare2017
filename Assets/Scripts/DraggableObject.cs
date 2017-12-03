@@ -6,6 +6,7 @@ public class DraggableObject : MonoBehaviour
 {
     public int value = 100;
 
+    public int breakThreashold = 50;
 
     public bool mouseIsDown;
     private Rigidbody rigidBody;
@@ -75,6 +76,8 @@ public class DraggableObject : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
+        Debug.Log("magnitude = " + col.impulse.magnitude);
+
         //Debug.Log(col.gameObject.name + "  collided");
         DraggableObject d = col.gameObject.GetComponent<DraggableObject>();
         if (col.gameObject == MovementController.instance.backpack)
@@ -101,6 +104,13 @@ public class DraggableObject : MonoBehaviour
             {
                 contacts.Add(d, 1);
             }
+        }
+        else if(col.impulse.magnitude > breakThreashold)
+        {
+            Debug.Log("breaking = " + gameObject.name);
+            GameObject.Destroy(gameObject);
+            GameObject breakEffect = GameObject.Instantiate<GameObject>(RoundManager.instance.itemBreakPrefab);
+            breakEffect.transform.position = new Vector3(transform.position.x, col.transform.position.y, transform.position.z);
         }
     }
 
