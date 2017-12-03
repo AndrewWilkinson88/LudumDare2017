@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MovementController : MonoBehaviour {
+    public LayerMask movementLayerMask;
 
     public static MovementController instance;
 
@@ -33,11 +34,20 @@ public class MovementController : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position += new Vector3(0, 0, .05f);
+            Ray ray = new Ray(backpack.transform.position, new Vector3(0, 0, .05f));            
+            if (!Physics.Raycast(ray , .25f , movementLayerMask))
+            {
+                transform.position += new Vector3(0, 0, .05f);
+            }
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            transform.position += new Vector3(0, 0, -.05f);
+            Ray ray = new Ray(backpack.transform.position, new Vector3(0, 0, -.05f));
+            if (!Physics.Raycast(ray, .25f, movementLayerMask))
+            {
+                transform.position += new Vector3(0, 0, -.05f);
+            }
+            
         }
 
         if(Input.GetKey(KeyCode.E))
