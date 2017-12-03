@@ -15,6 +15,9 @@ public class MouseClickController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        if (RoundManager.instance.gameOver)
+            return;
+
         if (Input.GetMouseButtonDown(0))
         {
             

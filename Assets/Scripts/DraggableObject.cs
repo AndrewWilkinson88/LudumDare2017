@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DraggableObject : MonoBehaviour
 {
+    public int value = 100;
+
+
     public bool mouseIsDown;
     private Rigidbody rigidBody;
     public bool isOnBackpack = false;
@@ -43,6 +46,9 @@ public class DraggableObject : MonoBehaviour
 
     void LateUpdate()
     {
+        if (RoundManager.instance.gameOver)
+            return;
+
         if (mouseIsDown)
         {
             float x = Input.mousePosition.x;
