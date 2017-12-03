@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4274557496180292}
   m_Layer: 0
-  m_Name: NEWThreeDoorRoom
+  m_Name: ThreeDoorRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
