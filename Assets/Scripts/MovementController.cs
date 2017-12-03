@@ -12,6 +12,7 @@ public class MovementController : MonoBehaviour {
 
     //public List<DraggableObject> contacts = new List<DraggableObject>();
     public Dictionary<DraggableObject, int> contacts = new Dictionary<DraggableObject, int>();
+    public Dictionary<DraggableObject, bool> hasBeenAdded;
 
     // Use this for initialization
     void Start () {
@@ -21,6 +22,10 @@ public class MovementController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (RoundManager.instance.gameOver)
+            return;
+
 		if (Input.GetKey(KeyCode.A))
         {
             playerPhysicsPost.AddForce(new Vector3(-100f, 0, 0));
@@ -62,13 +67,15 @@ public class MovementController : MonoBehaviour {
         calculateOnMe();
     }
 
+    
     /// <summary>
     /// This method updates all objects contacting it and sets them to being on it.
     /// </summary>
     void calculateOnMe()
     {
         //keep a hash of the objects we've already considered so we can skip them later
-        Dictionary<DraggableObject, bool> hasBeenAdded = new Dictionary<DraggableObject, bool>();
+        //Doubles as a list of all objects connected to the character
+        hasBeenAdded = new Dictionary<DraggableObject, bool>();
 
         Queue<DraggableObject> q = new Queue<DraggableObject>();
         
@@ -96,4 +103,5 @@ public class MovementController : MonoBehaviour {
             }
         }
     }
+
 }
