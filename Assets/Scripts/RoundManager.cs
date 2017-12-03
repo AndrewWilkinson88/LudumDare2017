@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class RoundManager : MonoBehaviour {    
@@ -30,16 +31,17 @@ public class RoundManager : MonoBehaviour {
 	void Update () {
         if (gameOver)
             return;
+
         //If not paused
         elapsedTime += Time.deltaTime;
 
-        timerText.text = ""+Mathf.Ceil(ROUND_TIME - elapsedTime);
+        timerText.text = "" + Mathf.Ceil(ROUND_TIME - elapsedTime);
         if(elapsedTime > ROUND_TIME)
         {
-            Debug.Log("GAME IS OVER!!!!");
+            //Debug.Log("GAME IS OVER!!!!");
             gameOver = true;
             gameOverText.gameObject.SetActive(true);
-            //TODO play end sequence?  Go to another scene?
+            StartCoroutine(WaitForSceneEnd());
         }
 	}
 
@@ -47,5 +49,12 @@ public class RoundManager : MonoBehaviour {
     {
         totalScore += score;
         scoreText.text = "Score : " + totalScore;
+    }
+    
+    IEnumerator WaitForSceneEnd()
+    {
+        yield return new WaitForSeconds(2.0f);
+
+        SceneManager.LoadScene("Results");
     }
 }
