@@ -19,7 +19,7 @@ public class MovementController : MonoBehaviour {
         //playerPhysicsPost = GetComponent<Rigidbody>();
         instance = this;
     }
-	
+
 	// Update is called once per frame
 	void Update () {
 
