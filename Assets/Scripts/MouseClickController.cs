@@ -34,7 +34,8 @@ public class MouseClickController : MonoBehaviour {
                 {
                     Rigidbody r = d.GetComponent<Rigidbody>();
                     r.useGravity = true;
-                    
+                    r.isKinematic = false;
+
                     d.mouseIsDown = true;
                     curDraggable = d;                    
                 }
