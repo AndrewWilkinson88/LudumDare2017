@@ -105,7 +105,7 @@ public class DraggableObject : MonoBehaviour
                 contacts.Add(d, 1);
             }
         }
-        else if(col.impulse.magnitude > breakThreashold)
+        else if(!mouseIsDown && col.impulse.magnitude > breakThreashold)
         {
             Debug.Log("breaking = " + gameObject.name);
             GameObject.Destroy(gameObject);
