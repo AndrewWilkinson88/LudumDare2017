@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4064920001273642}
   - component: {fileID: 114459224414796412}
   - component: {fileID: 54842424412672296}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Present 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 33708700911641590}
   - component: {fileID: 23298477680584358}
   - component: {fileID: 65347269273491320}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 4277424710494592}
   - component: {fileID: 33977386021965246}
   - component: {fileID: 23622740592971490}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 4925748264810290}
   - component: {fileID: 33788418995480480}
   - component: {fileID: 23825233380316562}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,8 +87,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1338407147632494}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.61938167, z: 108.031654}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalPosition: {x: 2.0433812, y: 0.15, z: 6.379657}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4448556409170350}
   - {fileID: 4925748264810290}
@@ -296,6 +296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f27babb90daf6546ad47326d94248e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 100
+  value: 50
   mouseIsDown: 0
   isOnBackpack: 0

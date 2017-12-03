@@ -296,6 +296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f27babb90daf6546ad47326d94248e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 100
+  value: 50
   mouseIsDown: 0
   isOnBackpack: 0
