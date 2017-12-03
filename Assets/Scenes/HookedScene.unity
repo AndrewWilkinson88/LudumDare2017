@@ -2020,6 +2020,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 114120350414081302, guid: 6a92ad2248bf39a4d87dba208569695b,
+        type: 2}
+      propertyPath: breakThreashold
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a92ad2248bf39a4d87dba208569695b, type: 2}
   m_IsPrefabParent: 0
@@ -5535,6 +5540,12 @@ Prefab:
       propertyPath: gameOverText
       value: 
       objectReference: {fileID: 1950888176}
+    - target: {fileID: 114417071123193604, guid: f012679d9b0a6d145880a021e6aed654,
+        type: 2}
+      propertyPath: itemBreakPrefab
+      value: 
+      objectReference: {fileID: 1882771816446532, guid: 19284a83a1bd7184fa5b6c87b5e60203,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f012679d9b0a6d145880a021e6aed654, type: 2}
   m_IsPrefabParent: 0
@@ -6511,7 +6522,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1410449506
+  randomSeed: 770856946
   InitialModule:
     serializedVersion: 3
     enabled: 1
