@@ -9,6 +9,8 @@ public class RoundManager : MonoBehaviour {
     public static RoundManager instance;
 
     public GameObject depositeArea;
+    public List<DraggableObject> collectedItems = new List<DraggableObject>();
+
     public Text timerText;
     public Text scoreText;
     public Text gameOverText;

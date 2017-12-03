@@ -27,7 +27,9 @@ public class CharacterEnterCheck : MonoBehaviour {
                 valueSum += d.value;
                 //TODO:  Play an animation?  log that we collected this type of item?
                 MovementController.instance.contacts[d] = 0;
-                GameObject.Destroy(d.gameObject);
+                RoundManager.instance.collectedItems.Add(d);
+                d.gameObject.SetActive(false);
+                //GameObject.Destroy(d.gameObject);
             }
 
             RoundManager.instance.AddScore(valueSum * multiplier);
