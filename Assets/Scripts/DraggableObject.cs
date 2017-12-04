@@ -6,6 +6,7 @@ public class DraggableObject : MonoBehaviour
 {
     public int value = 100;
 
+    public int breakThreashold = 50;
 
     public bool mouseIsDown;
     private Rigidbody rigidBody;
@@ -19,31 +20,6 @@ public class DraggableObject : MonoBehaviour
         rigidBody = this.GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    /*
-    void Update()
-    {
-        if(mouseIsDown)
-        {
-            float x = Input.mousePosition.x;
-            float y = Input.mousePosition.y;
-            Camera c = Camera.main;
-
-            rigidBody.velocity = Vector2.zero;
-
-            //Vector3 p = c.ScreenToWorldPoint(new Vector3(x, y, MovementController.instance.backpack.transform.position.z - Camera.main.transform.position.z));
-            Vector3 p = c.ScreenToWorldPoint(new Vector3(x, y, Vector3.Distance(MovementController.instance.backpack.transform.position, Camera.main.transform.position)));
-
-            gameObject.transform.position = new Vector3(p.x, Mathf.Max(p.y, .5f), MovementController.instance.backpack.transform.position.z);
-        }        
-        else if(isOnBackpack)
-        {
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, MovementController.instance.backpack.transform.position.z);
-        }
-
-        isOnBackpack = false;
-    }*/
-
     void LateUpdate()
     {
         if (RoundManager.instance.gameOver)
@@ -56,11 +32,13 @@ public class DraggableObject : MonoBehaviour
             Camera c = Camera.main;
 
             rigidBody.velocity = Vector2.zero;
-
+            //rigidBody.useGravity = false;
             //Vector3 p = c.ScreenToWorldPoint(new Vector3(x, y, MovementController.instance.backpack.transform.position.z - Camera.main.transform.position.z));
             Vector3 p = c.ScreenToWorldPoint(new Vector3(x, y, Vector3.Distance(MovementController.instance.backpack.transform.position, Camera.main.transform.position)));
-
-            gameObject.transform.position = new Vector3(p.x, Mathf.Max(p.y, .5f), MovementController.instance.backpack.transform.position.z);
+            //Vector3 goalPos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, MovementController.instance.backpack.transform.position.z);
+            Vector3 goalPos = new Vector3(p.x, Mathf.Max(p.y, .5f), MovementController.instance.backpack.transform.position.z);
+            transform.position = Vector3.Lerp(gameObject.transform.position, goalPos, .1f);
+            //gameObject.transform.position = new Vector3(p.x, Mathf.Max(p.y, .5f), MovementController.instance.backpack.transform.position.z);
         }
         else if (isOnBackpack)
         {
@@ -73,6 +51,8 @@ public class DraggableObject : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
+        Debug.Log("magnitude = " + col.impulse.magnitude);
+
         //Debug.Log(col.gameObject.name + "  collided");
         DraggableObject d = col.gameObject.GetComponent<DraggableObject>();
         if (col.gameObject == MovementController.instance.backpack)
@@ -99,6 +79,18 @@ public class DraggableObject : MonoBehaviour
             {
                 contacts.Add(d, 1);
             }
+        }
+        else if(!mouseIsDown && col.impulse.magnitude > breakThreashold)
+        {
+            Debug.Log("breaking = " + gameObject.name);
+            if(MovementController.instance.contacts.ContainsKey(this))
+            {
+                MovementController.instance.contacts[this] = 0;
+            }
+
+            GameObject.Destroy(gameObject);
+            GameObject breakEffect = GameObject.Instantiate<GameObject>(RoundManager.instance.itemBreakPrefab);
+            breakEffect.transform.position = new Vector3(transform.position.x, col.transform.position.y, transform.position.z);
         }
     }
 

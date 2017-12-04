@@ -8,10 +8,12 @@ public class MouseClickController : MonoBehaviour {
     public LayerMask itemLayerMask;    
     private DraggableObject curDraggable;
 
+    public LineRenderer lineRenderer;
+
     // Use this for initialization
     void Start () {
-		
-	}
+        lineRenderer.enabled = false;
+    }
 
 	// Update is called once per frame
 	void Update () {
@@ -37,14 +39,24 @@ public class MouseClickController : MonoBehaviour {
                     r.isKinematic = false;
 
                     d.mouseIsDown = true;
-                    curDraggable = d;                    
+                    curDraggable = d;
+
+                    lineRenderer.enabled = true;
+                    lineRenderer.SetPosition(0, MovementController.instance.backpack.transform.position);
+                    lineRenderer.SetPosition(1, d.transform.position);
                 }
             }
         }
         else if (Input.GetMouseButtonUp(0) && curDraggable != null)
         {
             curDraggable.mouseIsDown = false;
-            curDraggable = null;            
+            curDraggable = null;
+            lineRenderer.enabled = false;
+        }
+        else if(lineRenderer.enabled && curDraggable != null)
+        {
+            lineRenderer.SetPosition(0, MovementController.instance.backpack.transform.position);
+            lineRenderer.SetPosition(1, curDraggable.transform.position);
         }
 	}
 }

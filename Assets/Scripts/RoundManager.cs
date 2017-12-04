@@ -8,6 +8,7 @@ public class RoundManager : MonoBehaviour {
     public static float ROUND_TIME = 60f;
 
     public static RoundManager instance;
+    public GameObject itemBreakPrefab;
 
     public GameObject depositeArea;
     public List<DraggableObject> collectedItems = new List<DraggableObject>();

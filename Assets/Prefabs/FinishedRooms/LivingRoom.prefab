@@ -2301,6 +2301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 50
+  breakThreashold: 50
   mouseIsDown: 0
   isOnBackpack: 0
 --- !u!114 &114146487564613490
@@ -2315,6 +2316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 100
+  breakThreashold: 50
   mouseIsDown: 0
   isOnBackpack: 0
 --- !u!114 &114166202195256480
@@ -2329,6 +2331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 50
+  breakThreashold: 50
   mouseIsDown: 0
   isOnBackpack: 0
 --- !u!114 &114179836436482514
@@ -2343,6 +2346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 50
+  breakThreashold: 50
   mouseIsDown: 0
   isOnBackpack: 0
 --- !u!114 &114185997786444776
@@ -2357,6 +2361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 50
+  breakThreashold: 50
   mouseIsDown: 0
   isOnBackpack: 0
 --- !u!114 &114372694583373194
@@ -2371,6 +2376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 100
+  breakThreashold: 50
   mouseIsDown: 0
   isOnBackpack: 0
 --- !u!114 &114387179241440940
@@ -2385,6 +2391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 50
+  breakThreashold: 50
   mouseIsDown: 0
   isOnBackpack: 0
 --- !u!114 &114498794257605002
@@ -2399,6 +2406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 100
+  breakThreashold: 50
   mouseIsDown: 0
   isOnBackpack: 0
 --- !u!114 &114709698103835796
@@ -2413,6 +2421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 50
+  breakThreashold: 50
   mouseIsDown: 0
   isOnBackpack: 0
 --- !u!114 &114917750015099430
@@ -2427,5 +2436,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 100
+  breakThreashold: 50
   mouseIsDown: 0
   isOnBackpack: 0

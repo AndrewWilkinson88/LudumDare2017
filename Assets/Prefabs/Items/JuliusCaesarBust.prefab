@@ -155,5 +155,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 200
+  breakThreashold: 5
   mouseIsDown: 0
   isOnBackpack: 0
