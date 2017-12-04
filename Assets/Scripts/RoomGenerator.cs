@@ -28,7 +28,7 @@ public class RoomGenerator : MonoBehaviour
         }
     }
 
-    public int roomCountGoal = 10;
+    private int roomCountGoal = 20;
     
     public List<RoomController> rooms;
     public GameObject buildingRoot;
@@ -146,6 +146,24 @@ public class RoomGenerator : MonoBehaviour
         else
         {
             //Maybe check if a second entrance can be added?
+            RoomController r = usedSpaces[o.x + "," + o.z];
+
+            if (o.from == Direction.NORTH && r.canNorth)
+            {
+                OpenWall(r, o);
+            }
+            if (o.from == Direction.SOUTH && r.canSouth)
+            {
+                OpenWall(r, o);
+            }
+            if (o.from == Direction.EAST && r.canEast)
+            {
+                OpenWall(r, o);
+            }
+            if (o.from == Direction.WEST && r.canWest)
+            {
+                OpenWall(r, o);
+            }
         }
     }
 

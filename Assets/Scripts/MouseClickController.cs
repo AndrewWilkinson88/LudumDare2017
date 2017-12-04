@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MouseClickController : MonoBehaviour {
     //Right now make this really long, we should probaly make it shorter eventually
-    private float maxReach = 5f;
+    private float maxReach = 3f;
     public LayerMask itemLayerMask;    
     private DraggableObject curDraggable;
 
