@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 944cc979b0020d640a476f5a32e0934b
+timeCreated: 1512347904
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Avenir 85 Heavy
+  fontNames:
+  - Avenir 85 Heavy
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

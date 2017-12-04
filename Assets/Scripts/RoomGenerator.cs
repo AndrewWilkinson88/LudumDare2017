@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomGenerator : MonoBehaviour {
-    
-
+public class RoomGenerator : MonoBehaviour
+{
     private enum Direction
     {
         NORTH,
@@ -30,8 +29,9 @@ public class RoomGenerator : MonoBehaviour {
     }
 
     public int roomCountGoal = 10;
-
+    
     public List<RoomController> rooms;
+    public GameObject buildingRoot;
 
     private List<RoomController> connectsAll = new List<RoomController>();
     private List<RoomController> connectsfromNorth = new List<RoomController>();
@@ -63,8 +63,13 @@ public class RoomGenerator : MonoBehaviour {
                 connectsAll.Add(r);
         }
 
+        buildingRoot = new GameObject("NewBuilding");
         GenerateRooms();
-	}
+
+        //Updates the total number of items for the scoreManager
+        int totalItems = buildingRoot.GetComponentsInChildren<DraggableObject>(true).Length;
+        ScoreManager.instance.SetTotalItems(totalItems);
+    }
 
     void GenerateRooms()
     {
@@ -73,6 +78,7 @@ public class RoomGenerator : MonoBehaviour {
         RoomController firstRoom = GameObject.Instantiate<RoomController>(connectsAll[i]);
         firstRoom.gameObject.name = "0,0";
         firstRoom.transform.position = new Vector3(0, 0, 0);
+        firstRoom.transform.parent = buildingRoot.transform;
         roomCountGoal--;
         usedSpaces.Add("0,0", firstRoom);
         openConnections.Add(new OpenConnection(1, 0, Direction.EAST, firstRoom));
@@ -112,6 +118,7 @@ public class RoomGenerator : MonoBehaviour {
             }
 
             RoomController newRoom = GameObject.Instantiate<RoomController>( possibleRoomList[Random.Range(0,possibleRoomList.Count)]);
+            newRoom.transform.parent = buildingRoot.transform;
             newRoom.gameObject.name = o.x + "," + o.z;
             roomCountGoal--;
             newRoom.transform.position = new Vector3(o.x* roomSizeX, 0, o.z* roomSizeZ);
@@ -169,9 +176,4 @@ public class RoomGenerator : MonoBehaviour {
         }
 
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
