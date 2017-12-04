@@ -23,7 +23,7 @@ public class MovementController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (RoundManager.instance.gameOver)
+        if (RoundManager.instance!= null && RoundManager.instance.gameOver)
             return;
 
 		if (Input.GetKey(KeyCode.A))
