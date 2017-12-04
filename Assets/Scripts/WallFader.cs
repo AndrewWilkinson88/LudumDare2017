@@ -43,21 +43,29 @@ public class WallFader : MonoBehaviour
 
                 previousFade.Add(hit.collider.gameObject);
                 Renderer wallRender = hit.collider.gameObject.GetComponentInChildren<Renderer>(true);
+
+#if UNITY_WEBGL
+                wallRender.enabled = false;
+#else
                 Color fade = wallRender.material.color;
                 changeRenderMode(hit.collider.gameObject, BlendMode.Fade);
-
                 fade.a = FADE_VALUE;
                 wallRender.material.color = fade;
+#endif
             }
         }
 
         foreach( GameObject fadeObject in fadeCheck )
         {
             Renderer prevWallRender = fadeObject.GetComponentInChildren<Renderer>(true);
+#if UNITY_WEBGL
+            prevWallRender.enabled = true;
+#else
             Color noFade = prevWallRender.material.color;
             noFade.a = 1.0f;
             prevWallRender.material.color = noFade;
             changeRenderMode(fadeObject, BlendMode.Opaque);
+#endif
         }
         fadeCheck = new List<GameObject>(previousFade);
     }
