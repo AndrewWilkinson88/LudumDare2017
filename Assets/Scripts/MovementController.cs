@@ -26,18 +26,18 @@ public class MovementController : MonoBehaviour {
         if (RoundManager.instance!= null && RoundManager.instance.gameOver)
             return;
 
-		if (Input.GetKey(KeyCode.A))
+		if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             playerPhysicsPost.AddForce(new Vector3(-100f, 0, 0));
             //transform.position = transform.position + new Vector3(-.01f,0,0);
         }
-        else if(Input.GetKey(KeyCode.D))
+        else if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             playerPhysicsPost.AddForce(new Vector3(100f, 0, 0));
             //transform.position = transform.position + new Vector3(.01f, 0, 0);
         }
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             Ray ray = new Ray(backpack.transform.position, new Vector3(0, 0, .05f));            
             if (!Physics.Raycast(ray , .25f , movementLayerMask))
@@ -45,7 +45,7 @@ public class MovementController : MonoBehaviour {
                 transform.position += new Vector3(0, 0, .05f);
             }
         }
-        else if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             Ray ray = new Ray(backpack.transform.position, new Vector3(0, 0, -.05f));
             if (!Physics.Raycast(ray, .25f, movementLayerMask))
@@ -88,11 +88,15 @@ public class MovementController : MonoBehaviour {
             }
         }
 
+        int curLootScore = 0;
+        //int curMultiplier = 0;
         //Debug.Log("num in contact: " + q.Count);
         while (q.Count > 0)
         {
             DraggableObject d = q.Dequeue();
             d.isOnBackpack = true;
+            curLootScore += d.value;
+            //curMultiplier++;
             foreach (DraggableObject ndo in d.contacts.Keys)
             {
                 if(!hasBeenAdded.ContainsKey(ndo) && d.contacts[ndo] > 0)
@@ -102,6 +106,8 @@ public class MovementController : MonoBehaviour {
                 }
             }
         }
+
+        RoundManager.instance.SetCurLootScore(curLootScore, hasBeenAdded.Keys.Count);
     }
 
 }
