@@ -2,19 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterEnterCheck : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-
+public class CharacterEnterCheck : MonoBehaviour
+{
     void OnTriggerEnter(Collider col)
     {
         Debug.Log("ON TRIGGER ENTER!  " + col.gameObject.name);
@@ -40,6 +29,7 @@ public class CharacterEnterCheck : MonoBehaviour {
             }
 
             RoundManager.instance.AddScore(valueSum * multiplier);
+            ScoreManager.instance.SetLargestStack(MovementController.instance.hasBeenAdded.Keys.Count);
         }
     }
 }
