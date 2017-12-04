@@ -13,16 +13,18 @@ public class CharacterEnterCheck : MonoBehaviour
             List<DraggableObject> toRemove = new List<DraggableObject>();
             foreach (DraggableObject d in MovementController.instance.hasBeenAdded.Keys)
             {
-                if (d == null || d.gameObject == null)
+                if (d == null || d.gameObject == null || !d.gameObject.activeSelf)
                 {
                     toRemove.Add(d);//MovementController.instance.hasBeenAdded.Remove(d);
                 }
             }
             foreach (DraggableObject d in toRemove)
             {
-                MovementController.instance.hasBeenAdded.Remove(d);
+                MovementController.instance.hasBeenAdded.Remove(d);                
+                MovementController.instance.contacts.Remove(d);
             }
 
+            toRemove = new List<DraggableObject>();
             int valueSum = 0;
             int multiplier = MovementController.instance.hasBeenAdded.Keys.Count;
             foreach (DraggableObject d in MovementController.instance.hasBeenAdded.Keys)
@@ -32,7 +34,14 @@ public class CharacterEnterCheck : MonoBehaviour
                 MovementController.instance.contacts[d] = 0;
                 RoundManager.instance.collectedItems.Add(d);
                 d.gameObject.SetActive(false);
+                toRemove.Add(d);
                 //GameObject.Destroy(d.gameObject);
+            }
+            
+            foreach (DraggableObject d in toRemove)
+            {
+                MovementController.instance.hasBeenAdded.Remove(d);
+                MovementController.instance.contacts.Remove(d);
             }
 
             RoundManager.instance.AddScore(valueSum * multiplier);
