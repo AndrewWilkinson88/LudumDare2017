@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 23574377365407872}
   - component: {fileID: 95144310030964298}
   - component: {fileID: 65135147807612184}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: printer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
