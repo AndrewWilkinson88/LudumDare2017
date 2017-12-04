@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ResultsScreen : MonoBehaviour
 {
+    public Dictionary<string, bool> testDic = new Dictionary<string, bool>();
+
     public void OnPlayAgain()
     {
         SceneManager.LoadScene("HookedScene");
