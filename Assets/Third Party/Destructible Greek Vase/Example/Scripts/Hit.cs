@@ -18,6 +18,5 @@ public class Hit : MonoBehaviour {
 			Instantiate(DestroyedObject, transform.position, transform.rotation);
 		}
 		Destroy(gameObject);
-
 	}
 }

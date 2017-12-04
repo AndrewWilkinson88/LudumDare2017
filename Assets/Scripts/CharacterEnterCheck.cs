@@ -20,6 +20,13 @@ public class CharacterEnterCheck : MonoBehaviour {
         Debug.Log("ON TRIGGER ENTER!  " + col.gameObject.name);
         if (col.gameObject == RoundManager.instance.depositeArea)
         {
+            foreach (DraggableObject d in MovementController.instance.hasBeenAdded.Keys)
+            {
+                if (d == null || d.gameObject == null)
+                {
+                    MovementController.instance.hasBeenAdded.Remove(d);
+                }
+            }
             int valueSum = 0;
             int multiplier = MovementController.instance.hasBeenAdded.Keys.Count;
             foreach (DraggableObject d in MovementController.instance.hasBeenAdded.Keys)
