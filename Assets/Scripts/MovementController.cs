@@ -57,11 +57,11 @@ public class MovementController : MonoBehaviour {
 
         if(Input.GetKey(KeyCode.E))
         {
-            backpack.GetComponent<Rigidbody>().AddTorque(new Vector3(0, 0, -10f));
+            backpack.GetComponent<Rigidbody>().AddTorque(new Vector3(0, 0, -40f));
         }
         else if(Input.GetKey(KeyCode.Q))
         {
-            backpack.GetComponent<Rigidbody>().AddTorque(new Vector3(0, 0,10f));
+            backpack.GetComponent<Rigidbody>().AddTorque(new Vector3(0, 0, 40f));
         }
 
         calculateOnMe();

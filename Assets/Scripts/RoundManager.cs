@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class RoundManager : MonoBehaviour {    
-    public static float ROUND_TIME = 60f;
+    public static float ROUND_TIME = 120f;
 
     public static RoundManager instance;
     public GameObject itemBreakPrefab;
@@ -39,6 +39,9 @@ public class RoundManager : MonoBehaviour {
         elapsedTime += Time.deltaTime;
 
         timerText.text = "" + Mathf.Ceil(ROUND_TIME - elapsedTime);
+        if (ROUND_TIME - elapsedTime < 10)
+            timerText.color = Color.red;
+
         if(elapsedTime > ROUND_TIME)
         {
             //Debug.Log("GAME IS OVER!!!!");
