@@ -10,13 +10,19 @@ public class CharacterEnterCheck : MonoBehaviour
     {
         if(collecting)
         {
+            List<DraggableObject> toRemove = new List<DraggableObject>();
             foreach (DraggableObject d in MovementController.instance.hasBeenAdded.Keys)
             {
                 if (d == null || d.gameObject == null)
                 {
-                    MovementController.instance.hasBeenAdded.Remove(d);
+                    toRemove.Add(d);//MovementController.instance.hasBeenAdded.Remove(d);
                 }
             }
+            foreach (DraggableObject d in toRemove)
+            {
+                MovementController.instance.hasBeenAdded.Remove(d);
+            }
+
             int valueSum = 0;
             int multiplier = MovementController.instance.hasBeenAdded.Keys.Count;
             foreach (DraggableObject d in MovementController.instance.hasBeenAdded.Keys)
