@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class CharacterEnterCheck : MonoBehaviour
 {
-    void OnTriggerEnter(Collider col)
+    public bool collecting = false;
+
+    void Update()
     {
-        Debug.Log("ON TRIGGER ENTER!  " + col.gameObject.name);
-        if (col.gameObject == RoundManager.instance.depositeArea)
+        if(collecting)
         {
             foreach (DraggableObject d in MovementController.instance.hasBeenAdded.Keys)
             {
@@ -30,6 +31,23 @@ public class CharacterEnterCheck : MonoBehaviour
 
             RoundManager.instance.AddScore(valueSum * multiplier);
             ScoreManager.instance.SetLargestStack(MovementController.instance.hasBeenAdded.Keys.Count);
+        }
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        Debug.Log("ON TRIGGER ENTER!  " + col.gameObject.name);
+        if (col.gameObject == RoundManager.instance.depositeArea)
+        {
+            collecting = true;
+        }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject == RoundManager.instance.depositeArea)
+        {
+            collecting = false;
         }
     }
 }
