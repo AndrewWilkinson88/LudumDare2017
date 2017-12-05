@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class RoundManager : MonoBehaviour {
-    //public static float ROUND_TIME = 120f;
-    public static float ROUND_TIME = 10f;
+    public static float ROUND_TIME = 120f;
 
     public static RoundManager instance;
     public GameObject itemBreakPrefab;
