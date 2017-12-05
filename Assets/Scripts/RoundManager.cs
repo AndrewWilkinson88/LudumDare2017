@@ -17,7 +17,7 @@ public class RoundManager : MonoBehaviour {
     public Text timerText;
     public Text scoreText;
     public Text curLoot;
-    public Text gameOverText;
+    public Image gameOverImage;
     private float elapsedTime;
     private int totalScore;
 
@@ -28,7 +28,7 @@ public class RoundManager : MonoBehaviour {
     {
         instance = this;
         totalScore = 0;
-        gameOverText.gameObject.SetActive(false);
+        gameOverImage.gameObject.SetActive(false);
         ScoreManager.instance.ResetGame();
     }
 	
@@ -49,7 +49,7 @@ public class RoundManager : MonoBehaviour {
         {
             //Debug.Log("GAME IS OVER!!!!");
             gameOver = true;
-            gameOverText.gameObject.SetActive(true);
+            gameOverImage.gameObject.SetActive(true);
             ScoreManager.instance.SetItemsCollected(collectedItems);
             StartCoroutine(WaitForSceneEnd());
         }

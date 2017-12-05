@@ -134,6 +134,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainPlayer: {fileID: 82256326939186106}
   mainSong: {fileID: 8300000, guid: 2729d3b317c8a9b4db447528bd16dabb, type: 3}
-  whistleSFX: {fileID: 8300000, guid: ac80743ab8505f74484e6f563d3f3087, type: 3}
+  whistleSFX: {fileID: 8300000, guid: 094d810409a2857418796258fcc4cfa4, type: 3}
   clickSFX: {fileID: 8300000, guid: f34a77eceee5b984b845661d5bbf051b, type: 3}
   releaseSFX: {fileID: 8300000, guid: d29fed18666393045b1e398994e4dcd6, type: 3}
