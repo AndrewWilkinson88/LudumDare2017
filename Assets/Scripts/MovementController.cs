@@ -94,15 +94,18 @@ public class MovementController : MonoBehaviour {
         while (q.Count > 0)
         {
             DraggableObject d = q.Dequeue();
-            d.isOnBackpack = true;
-            curLootScore += d.value;
-            //curMultiplier++;
-            foreach (DraggableObject ndo in d.contacts.Keys)
+            if (d != null && d.gameObject != null && d.gameObject.activeSelf)
             {
-                if(!hasBeenAdded.ContainsKey(ndo) && d.contacts[ndo] > 0)
+                d.isOnBackpack = true;
+                curLootScore += d.value;
+                //curMultiplier++;
+                foreach (DraggableObject ndo in d.contacts.Keys)
                 {
-                    hasBeenAdded.Add(ndo, true);
-                    q.Enqueue(ndo);
+                    if (!hasBeenAdded.ContainsKey(ndo) && d.contacts[ndo] > 0)
+                    {
+                        hasBeenAdded.Add(ndo, true);
+                        q.Enqueue(ndo);
+                    }
                 }
             }
         }
