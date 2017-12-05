@@ -795,7 +795,7 @@ GameObject:
   - component: {fileID: 1878671174}
   - component: {fileID: 1878671173}
   m_Layer: 12
-  m_Name: DepositeArea
+  m_Name: DepositArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -915,7 +915,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1257248656
+  randomSeed: -1428075681
   InitialModule:
     serializedVersion: 3
     enabled: 1
