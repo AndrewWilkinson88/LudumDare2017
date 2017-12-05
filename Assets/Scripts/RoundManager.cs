@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class RoundManager : MonoBehaviour {    
-    public static float ROUND_TIME = 120f;
+public class RoundManager : MonoBehaviour {
+    //public static float ROUND_TIME = 120f;
+    public static float ROUND_TIME = 10f;
 
     public static RoundManager instance;
     public GameObject itemBreakPrefab;
@@ -28,6 +29,7 @@ public class RoundManager : MonoBehaviour {
         instance = this;
         totalScore = 0;
         gameOverText.gameObject.SetActive(false);
+        ScoreManager.instance.ResetGame();
     }
 	
 	// Update is called once per frame
@@ -62,6 +64,9 @@ public class RoundManager : MonoBehaviour {
     
     IEnumerator WaitForSceneEnd()
     {
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlayWhistle();
+
         yield return new WaitForSeconds(2.0f);
 
         SceneManager.LoadScene("Results");

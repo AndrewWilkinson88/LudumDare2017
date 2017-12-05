@@ -45,7 +45,7 @@ public class CharacterEnterCheck : MonoBehaviour
             }
 
             RoundManager.instance.AddScore(valueSum * multiplier);
-            ScoreManager.instance.SetLargestStack(MovementController.instance.hasBeenAdded.Keys.Count);
+            ScoreManager.instance.SetLargestStack(multiplier);
         }
     }
 
