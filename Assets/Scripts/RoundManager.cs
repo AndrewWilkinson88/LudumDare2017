@@ -15,6 +15,7 @@ public class RoundManager : MonoBehaviour {
 
     public Text timerText;
     public Text scoreText;
+    public Text curLoot;
     public Text gameOverText;
     private float elapsedTime;
     private int totalScore;
@@ -64,5 +65,15 @@ public class RoundManager : MonoBehaviour {
         yield return new WaitForSeconds(2.0f);
 
         SceneManager.LoadScene("Results");
+    }
+
+    public void SetCurLootScore(int curValue, int multiplier)
+    {
+        if (curValue == 0)
+            curLoot.text = "";
+        else
+            curLoot.text = "value: " + curValue +
+                           "\nmultiplier: " + multiplier +
+                           "\ntotal: " + (curValue * multiplier);
     }
 }
