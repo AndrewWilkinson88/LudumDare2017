@@ -21,17 +21,17 @@ public class RoundManager : MonoBehaviour {
 
     public bool gameOver = false;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
         instance = this;
-        ScoreManager.instance.ResetGame();
         totalScore = 0;
         gameOverText.gameObject.SetActive(false);
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         if (gameOver)
             return;
 
