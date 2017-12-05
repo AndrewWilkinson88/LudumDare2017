@@ -392,6 +392,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114755847774839246, guid: ae2929253894b974c967ec2b1255162c,
+        type: 2}
+      propertyPath: mainSong
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f46450e1c2b39f45a82570b75468287, type: 3}
+    - target: {fileID: 82256326939186106, guid: ae2929253894b974c967ec2b1255162c,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0f46450e1c2b39f45a82570b75468287, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ae2929253894b974c967ec2b1255162c, type: 2}
   m_IsPrefabParent: 0
@@ -405,12 +415,12 @@ Prefab:
     - target: {fileID: 224470718201767378, guid: bc62b7f695e4d6d41bed0c2d759d66be,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 395
+      value: 538
       objectReference: {fileID: 0}
     - target: {fileID: 224470718201767378, guid: bc62b7f695e4d6d41bed0c2d759d66be,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 222
+      value: 342
       objectReference: {fileID: 0}
     - target: {fileID: 224470718201767378, guid: bc62b7f695e4d6d41bed0c2d759d66be,
         type: 2}
@@ -918,7 +928,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -822762341
+  randomSeed: -1702244516
   InitialModule:
     serializedVersion: 3
     enabled: 1
