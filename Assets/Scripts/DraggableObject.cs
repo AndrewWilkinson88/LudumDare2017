@@ -59,7 +59,7 @@ public class DraggableObject : MonoBehaviour
         {
             if (MovementController.instance.contacts.ContainsKey(this))
             {
-                MovementController.instance.contacts[this] = 1;
+                MovementController.instance.contacts[this] ++;
             }
             else
             {
@@ -73,7 +73,7 @@ public class DraggableObject : MonoBehaviour
             //draggableContact.Add(d);
             if(contacts.ContainsKey(d))
             {
-                contacts[d] = 1;
+                contacts[d] ++;
             }
             else
             {
@@ -85,7 +85,7 @@ public class DraggableObject : MonoBehaviour
             Debug.Log("breaking = " + gameObject.name);
             if(MovementController.instance.contacts.ContainsKey(this))
             {
-                MovementController.instance.contacts[this] = 0;
+                MovementController.instance.contacts[this] --;
             }
 
             GameObject.Destroy(gameObject);
@@ -100,12 +100,12 @@ public class DraggableObject : MonoBehaviour
         if (col.gameObject == MovementController.instance.backpack)
         {
             //TempCharacterController.instance.contacts.Remove(d);            
-            MovementController.instance.contacts[this] = 0;
+            MovementController.instance.contacts[this] --;
             Debug.Log("removing contact, new count: " + MovementController.instance.contacts[this]);
         }
         else if(d != null)
         {
-            contacts[d] = 0;
+            contacts[d] --;
         }
     }
 

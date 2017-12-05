@@ -12,6 +12,7 @@ public class RoundManager : MonoBehaviour {
     public GameObject itemBreakPrefab;
 
     public GameObject depositeArea;
+    public GameObject bag;
     public List<DraggableObject> collectedItems = new List<DraggableObject>();
 
     public Text timerText;
@@ -60,6 +61,8 @@ public class RoundManager : MonoBehaviour {
         totalScore += score;
         scoreText.text = "Score : " + totalScore;
         ScoreManager.instance.UpdateScore(totalScore);
+        float si = 0.001f * score;
+        bag.transform.localScale = RoundManager.instance.bag.transform.localScale  + new Vector3(si, si, si);
     }
     
     IEnumerator WaitForSceneEnd()

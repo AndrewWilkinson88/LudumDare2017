@@ -8,9 +8,10 @@ public class CharacterEnterCheck : MonoBehaviour
 
     void Update()
     {
-        if(collecting)
+        if(collecting && MovementController.instance.hasBeenAdded != null)
         {
             List<DraggableObject> toRemove = new List<DraggableObject>();
+            
             foreach (DraggableObject d in MovementController.instance.hasBeenAdded.Keys)
             {
                 if (d == null || d.gameObject == null || !d.gameObject.activeSelf)
@@ -43,7 +44,7 @@ public class CharacterEnterCheck : MonoBehaviour
                 MovementController.instance.hasBeenAdded.Remove(d);
                 MovementController.instance.contacts.Remove(d);
             }
-
+            
             RoundManager.instance.AddScore(valueSum * multiplier);
             ScoreManager.instance.SetLargestStack(multiplier);
         }
