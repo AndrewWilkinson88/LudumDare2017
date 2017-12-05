@@ -41,7 +41,7 @@ public class MouseClickController : MonoBehaviour {
 
                     d.mouseIsDown = true;
                     curDraggable = d;
-
+                    AudioManager.instance.PlayClick();
                     lineRenderer.enabled = true;
                     lineRenderer.SetPosition(0, MovementController.instance.backpack.transform.position);
                     lineRenderer.SetPosition(1, d.transform.position);
@@ -50,6 +50,7 @@ public class MouseClickController : MonoBehaviour {
         }
         else if (Input.GetMouseButtonUp(0) && curDraggable != null)
         {
+            AudioManager.instance.PlayRelease();
             curDraggable.mouseIsDown = false;
             curDraggable = null;
             lineRenderer.enabled = false;

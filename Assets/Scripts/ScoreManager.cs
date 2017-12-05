@@ -29,10 +29,7 @@ public class ScoreManager : MonoBehaviour
 
     public void ResetGame()
     {
-        collectedItems.Clear();
-        score = 0;
-        itemsCollected = 0;
-        totalItems = 0;
+        largestStack = 0;
     }
 
     public void SetTotalItems(int count)
